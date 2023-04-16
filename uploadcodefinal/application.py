@@ -1,7 +1,6 @@
 
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 from flask import Flask, render_template, request
-import boto3
 import json
 
 from legal_consequences import query
@@ -9,10 +8,10 @@ from legal_consequences import query
 application = Flask(__name__)
 
 # Define the AWS SageMaker endpoint name
-endpoint_name = 'Endpoint-Distilbert-Base-cased-1'
+# endpoint_name = 'Endpoint-Distilbert-Base-cased-1'
 
 # Create a SageMaker runtime client
-sagemaker_runtime_client = boto3.client('runtime.sagemaker')
+# sagemaker_runtime_client = boto3.client('runtime.sagemaker')
 
 
 @application.route('/')
