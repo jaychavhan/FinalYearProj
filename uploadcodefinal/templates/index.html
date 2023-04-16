@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Social Media Text Classification</title>
+    <!-- Import Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Define custom CSS styles -->
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .jumbotron {
+        background-color: #007bff;
+        color: #fff;
+        text-align: center;
+        margin-bottom: 0;
+      }
+      .form-group {
+        margin-top: 50px;
+        margin-bottom: 50px;
+      }
+      .form-control {
+        font-size: 18px;
+        height: 150px;
+        border-radius: 10px;
+        border-color: #007bff;
+        color: #000;
+      }
+      .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        font-size: 18px;
+        border-radius: 10px;
+      }
+      .btn-primary:hover {
+        background-color: #0062cc;
+        border-color: #0062cc;
+      }
+      .lead {
+        font-size: 24px;
+        font-weight: bold;
+        color: #007bff;
+        text-align: center;
+        margin-bottom: 50px;
+      }
+      .result-container {
+        margin-top: 50px;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 10px;
+        border-color: #007bff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      }
+      .result-label {
+        font-size: 24px;
+        font-weight: bold;
+        color: #007bff;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .result-text {
+        font-size: 18px;
+        color: #000;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="jumbotron">
+      <h1 class="display-4">Social Media Text Classification</h1>
+    </div>
+    <div class="container">
+      <form action="/classify" method="post">
+        <div class="form-group">
+          <label class="lead" for="text">Enter text to classify:</label>
+          <textarea class="form-control" id="text" name="text" rows="4" placeholder="Type your text here...">{{ request.form['text'] if request.method == 'POST' else '' }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Classify</button>
+      </form>
+
+      {% if classification %}
+      <div class="result-container">
+        <p class="result-label">The text is classified as:</p>
+        <p class="result-text">{{ classification }}</p>
+        <p class="lead">General Information:</p>
+        <p>{{ info }}</p>
+      </div>
+      {% endif %}
+    </div>
+    <!-- Import Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
